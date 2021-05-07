@@ -14,12 +14,8 @@ const fetchDrinks = async (drink: string) => {
   return drinks;
 }
 
-const searchClear = (text: string) => {
-  return text
-}
-
-const updateText = (value: string) => {
-  console.log(value)
+const clearSearch = () => {
+  console.log("Clearing...");
 }
 
 const DetailScreen = ({ route }: any) => {
@@ -43,15 +39,20 @@ const DetailScreen = ({ route }: any) => {
 
     {loading ? <ActivityIndicator size="large" color="#ffffff" style={styles.loadingContainer} /> :
       <>
-        <View >
-          {/* <TextInput defaultValue={query} style={[styles.searchInput, { width: '80%', marginLeft: 5, marginTop: 5, marginRight: 5 }]} />
-          <Button title={CANCEL_BUTTON_TEXT} onPress={() => cancelSearch()} color="transparent" /> */}
-          <SearchBar
+        <View style={styles.topBarContainer}>
+          <TextInput defaultValue={query} style={[styles.searchInput, { width: '80%', marginLeft: 5, marginTop: 5, marginRight: 5 }]} />
+          <Button title={CANCEL_BUTTON_TEXT} onPress={() => clearSearch()} color="transparent" />
+          {/*  <SearchBar
+            containerStyle={{ backgroundColor: 'white' }}
+            inputStyle={{ backgroundColor: '#efefef' }}
+
             placeholder="Type Here..."
-            //onChangeText={(e) => setQuery(e)}
-            //defaultValue={query}
+            platform="default"
+            onChangeText={(e) => setQuery(e)}
+            defaultValue={query}
             searchIcon={{ size: 24 }}
-          />
+            cancelButtonTitle='Cancel'
+          /> */}
         </View>
         <ScrollView>
           <View >
