@@ -9,12 +9,11 @@
  */
 import 'react-native-gesture-handler';
 import React from 'react';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { createStackNavigator, StackScreenProps } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import DetailScreen from "./screens/DetailScreen"
 import MainScreen from './screens/MainScreen';
-import { BorderlessButton } from 'react-native-gesture-handler';
 
 
 
@@ -24,11 +23,11 @@ type RootStackParamList = {
   Detail: { query: string };
 };
 
-type Props = StackScreenProps<RootStackParamList, 'Detail'>;
+//type Props = StackScreenProps<RootStackParamList, 'Detail'>;
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
-const App = ({ navigation }: Props) => {
+const App = () => {
 
   return (
     <NavigationContainer>
@@ -39,7 +38,5 @@ const App = ({ navigation }: Props) => {
     </NavigationContainer>
   );
 };
-
-
 
 export default App;

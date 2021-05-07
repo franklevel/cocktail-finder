@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { PRIMARY_COLOR } from "./constants";
 
 const styles = StyleSheet.create({
   container: {
@@ -22,6 +23,8 @@ const styles = StyleSheet.create({
   },
   topBarContainer: {
     flexDirection: 'row',
+    backgroundColor: 'white',
+    padding: 5
   },
   mainTitle: {
     fontSize: 24,
@@ -34,6 +37,7 @@ const styles = StyleSheet.create({
     paddingLeft: 12,
     marginTop: 12,
     fontWeight: '600',
+    flexShrink: 1
   },
   cardThumb: {
     height: 80,
@@ -44,19 +48,31 @@ const styles = StyleSheet.create({
     marginTop: 8,
     fontSize: 18,
     fontWeight: '400',
+    flexShrink: 1
   },
   highlight: {
     fontWeight: '700',
   },
   searchInput: {
+    width: '90%',
     padding: 6,
     fontSize: 20,
     fontWeight: '600',
-    backgroundColor: 'whitesmoke',
+    backgroundColor: '#ebebeb',
     borderRadius: 6,
   },
-  cancelButton: {
-    backgroundColor: 'transparent'
+  topBarButton: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: PRIMARY_COLOR,
+    backgroundColor: 'transparent',
+    padding: 10,
+    marginTop: 5
+  },
+  logo: {
+    width: 50,
+    height: 50,
+    resizeMode: 'stretch',
   }
 });
 
