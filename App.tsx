@@ -8,6 +8,7 @@
  * @format
  */
 import 'react-native-gesture-handler';
+import 'react-native-vector-icons';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';

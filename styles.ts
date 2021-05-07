@@ -15,10 +15,12 @@ const styles = StyleSheet.create({
   cardContainer: {
     flexDirection: 'row',
     marginTop: 32,
+    marginLeft: 10,
+    marginRight: 10,
+    marginBottom: 0,
     paddingHorizontal: 24,
     backgroundColor: 'white',
     padding: 20,
-    margin: 10,
     borderRadius: 12
   },
   topBarContainer: {
@@ -55,7 +57,10 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     width: '90%',
-    padding: 6,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 6,
+    paddingBottom: 6,
     fontSize: 20,
     fontWeight: '600',
     backgroundColor: '#ebebeb',
@@ -73,6 +78,10 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     resizeMode: 'stretch',
+  },
+  linearGradient: {
+    flex: 3,
+    flexDirection: 'column'
   }
 });
 

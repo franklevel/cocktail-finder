@@ -1,32 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, Button, NativeSyntheticEvent, Text, TextInput, TextInputChangeEventData, TouchableOpacity, View } from "react-native";
-import { SearchBar } from "react-native-elements";
+import { Icon } from "react-native-elements";
 import { ScrollView } from "react-native-gesture-handler";
 import LinearGradient from "react-native-linear-gradient";
 import Card from "../components/Card";
-import { CANCEL_BUTTON_TEXT, SEARCH_INPUT_TEXT } from "../constants";
+import { API_BASE_URL, CANCEL_BUTTON_TEXT, PRIMARY_COLOR, SEARCH_INPUT_TEXT, SECONDARY_COLOR } from "../constants";
 import styles from "../styles";
 
-
-
-const fetchDrinks = async (drink: string) => {
-  const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drink}`);
-  const drinks = await response.json();
-  return drinks;
+const fetchData = async (drink: string) => {
+  try {
+    if (!drink) throw "Empty string";
+    const response = await fetch(`${API_BASE_URL}search.php?s=${drink}`);
+    const drinks = await response.json();
+    return drinks;
+  } catch (error) {
+    return error;
+  }
 }
 
-
-const DetailScreen = ({ route }: any) => {
+const DetailScreen = ({ navigation, route }: any) => {
   const [query, setQuery] = useState<string>();
   const [drinks, setDrinks] = useState<Array<any>>();
   const [loading, setLoading] = useState<boolean>(true);
-
-  let drink = route.params.query;
-
+  const drink = route.params.query;
 
   useEffect(() => {
 
-    fetchDrinks(drink).then(response => {
+    fetchData(drink).then(response => {
       if (response) {
         setDrinks(response.drinks);
       }
@@ -43,7 +43,7 @@ const DetailScreen = ({ route }: any) => {
     setQuery(text);
     if (text) {
       setLoading(true);
-      fetchDrinks(text).then(response => {
+      fetchData(text).then(response => {
         if (response) {
           setDrinks(response.drinks);
         }
@@ -54,7 +54,9 @@ const DetailScreen = ({ route }: any) => {
     }
   }
 
-  return <LinearGradient colors={['#ff36a1', '#ff7a78']} style={{ flex: 3, flexDirection: 'column' }}>
+
+
+  return <LinearGradient colors={[PRIMARY_COLOR, SECONDARY_COLOR]} style={styles.linearGradient}>
 
     <>
       <View style={styles.topBarContainer}>
@@ -63,7 +65,7 @@ const DetailScreen = ({ route }: any) => {
           onChange={onChange}
           defaultValue={drink}
           value={query}
-          style={[styles.searchInput, { width: '80%', marginLeft: 5, marginTop: 5, marginRight: 5 }]} />
+          style={[styles.searchInput, { width: '78%', marginLeft: 5, marginTop: 5, marginRight: 5 }]} />
         <TouchableOpacity onPress={() => setQuery('')} ><Text style={styles.topBarButton}>{CANCEL_BUTTON_TEXT}</Text></TouchableOpacity>
       </View>
       <ScrollView>
