@@ -2,15 +2,19 @@ import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { ActivityIndicator, Image, Text, TextInput, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
-import styles from "../styles";
 import { PRIMARY_COLOR, SEARCH_PLACEHOLDER_TEXT, SECONDARY_COLOR, COCKTAIL_FINDER_TEXT, DEBOUNCE_DELAY } from '../constants';
 import { debounce } from 'lodash'
+import { useDispatch, useSelector } from "react-redux";
+import { setSearchQueryActionThunk } from "../redux/actions/drinksActions";
+import { AppState } from "../types/AppState";
+import styles from "../styles";
+
 
 const MainScreen = () => {
   const navigation = useNavigation();
   const [loading, setLoading] = useState<boolean>(true);
-  const [query, setQuery] = useState<string>("");
-
+  const query = useSelector((state: AppState) => state.query);
+  const dispatch = useDispatch();
   const loadDetailScreen = debounce(() => navigation.navigate('Detail', { query: query }), DEBOUNCE_DELAY);
 
   useEffect(() => {
@@ -31,8 +35,8 @@ const MainScreen = () => {
           <TextInput
             placeholder={SEARCH_PLACEHOLDER_TEXT}
             style={styles.searchInput}
-            onChangeText={(text) => setQuery(text)}
-            clearButtonMode="while-editing"
+            value={query}
+            onChangeText={(text) => dispatch(setSearchQueryActionThunk(text))}
           />
         </View>
       </>

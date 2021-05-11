@@ -66,10 +66,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#ebebeb',
     borderRadius: 6,
   },
+  topSearchInput: {
+    width: '68%',
+    marginLeft: 5,
+    marginTop: 5,
+    marginRight: 5
+  },
   topBarButton: {
     fontSize: 18,
     fontWeight: '600',
     color: PRIMARY_COLOR,
+    backgroundColor: 'transparent',
+    padding: 10,
+    marginTop: 5
+  },
+  topBarBackButton: {
     backgroundColor: 'transparent',
     padding: 10,
     marginTop: 5

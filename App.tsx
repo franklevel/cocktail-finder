@@ -16,27 +16,24 @@ import { createStackNavigator } from '@react-navigation/stack';
 import DetailScreen from "./screens/DetailScreen"
 import MainScreen from './screens/MainScreen';
 
+import { Provider as StoreProvider } from "react-redux"
+import store from "./redux/store/store"
+import { RootStackTypes } from './types/RootStackTypes';
 
 
-
-type RootStackParamList = {
-  Home: undefined;
-  Detail: { query: string };
-};
-
-//type Props = StackScreenProps<RootStackParamList, 'Detail'>;
-
-const RootStack = createStackNavigator<RootStackParamList>();
+const RootStack = createStackNavigator<RootStackTypes>();
 
 const App = () => {
 
   return (
-    <NavigationContainer>
-      <RootStack.Navigator>
-        <RootStack.Screen name="Home" component={MainScreen} options={{ headerShown: false }} />
-        <RootStack.Screen name="Detail" component={DetailScreen} options={{ headerShown: false }} />
-      </RootStack.Navigator>
-    </NavigationContainer>
+    <StoreProvider store={store}>
+      <NavigationContainer>
+        <RootStack.Navigator>
+          <RootStack.Screen name="Home" component={MainScreen} options={{ headerShown: false }} />
+          <RootStack.Screen name="Detail" component={DetailScreen} options={{ headerShown: false }} />
+        </RootStack.Navigator>
+      </NavigationContainer>
+    </StoreProvider>
   );
 };
 
