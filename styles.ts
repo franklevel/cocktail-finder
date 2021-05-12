@@ -21,7 +21,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     backgroundColor: 'white',
     padding: 20,
-    borderRadius: 12
+    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 1,
+    shadowRadius: 2,
   },
   topBarContainer: {
     flexDirection: 'row',
@@ -44,7 +48,7 @@ const styles = StyleSheet.create({
   cardThumb: {
     height: 80,
     width: 80,
-    borderRadius: 80,
+    borderRadius: 80
   },
   cardDescription: {
     marginTop: 8,
@@ -56,11 +60,12 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   searchInput: {
+    flexDirection: 'row',
     width: '90%',
     paddingLeft: 10,
     paddingRight: 10,
-    paddingTop: 6,
-    paddingBottom: 6,
+    paddingTop: 12,
+    paddingBottom: 12,
     fontSize: 20,
     fontWeight: '600',
     backgroundColor: '#ebebeb',

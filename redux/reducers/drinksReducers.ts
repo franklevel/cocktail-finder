@@ -1,4 +1,4 @@
-import { FECTH_DRINKS_ERROR, FECTH_DRINKS_START, FECTH_DRINKS_SUCCESS, SEARCH_DRINKS_START, SET_SEARCH_QUERY } from "../../constants"
+import { FECTH_DRINKS_ERROR, FECTH_DRINKS_START, FECTH_DRINKS_SUCCESS, RESET_DRINKS, SEARCH_DRINKS_START, SET_SEARCH_QUERY } from "../../constants"
 import { AppState } from "../../types/AppState";
 
 
@@ -31,6 +31,11 @@ function drinksReducer(state = initialState, action: ActionType) {
       return {
         ...state,
         isLoading: true
+      };
+    case RESET_DRINKS:
+      return {
+        ...state,
+        drinks: initialState.drinks
       };
 
     case FECTH_DRINKS_SUCCESS:
